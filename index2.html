@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         
         <link rel="stylesheet" href="style.css">
@@ -22,7 +23,8 @@
         
         function createItem(name, file){
             
-
+            
+            
             const itemDiv = document.createElement("div")
             itemDiv.classList.add("item")
             const rowDiv = document.createElement("div")
@@ -51,32 +53,43 @@
 
             
             itemDiv.appendChild(nameDiv)
-            const playBtns = document.querySelectorAll('.fa-play')
-    
+            
+
             const wavesurfer = WaveSurfer.create({
               container: waveContainer,
               waveColor: '#4F4A85',
               progressColor: '#383351',
               url: `${file}.mp3`,
             })
-            wavesurfer.setOptions({height:100})
+            
+            wavesurfer.setOptions({height:30})
+
+            
 
             wavesurfer.on('interaction', () => {
-                wavesurfer.play() 
+                wavesurfer.playPause();
+                buttonElement.classList.toggle("fa-pause");
+                buttonElement.classList.toggle("fa-play");
             })
 
-            for (const btn of playBtns) {
-                btn.addEventListener("click", () => {
-                    wavesurfer.play()
-                })
-            }
+            buttonElement.addEventListener("click", ()=> {
+                wavesurfer.playPause();
+                buttonElement.classList.toggle("fa-pause");
+                buttonElement.classList.toggle("fa-play");
+            })
+        }   
 
-        }
-
+        createItem("The Villain", "The_Villain")
+        createItem("The Villain", "The_Villain")
+        createItem("The Villain", "The_Villain")
+        createItem("The Villain", "The_Villain")
+        createItem("The Villain", "The_Villain")
+        createItem("The Villain", "The_Villain")
+        createItem("The Villain", "The_Villain")
         createItem("The Villain", "The_Villain")
         createItem("The Villain", "The_Villain")
         
 
     </script>
     </body>
-</html
+</html>
